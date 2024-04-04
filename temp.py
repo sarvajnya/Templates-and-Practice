@@ -104,18 +104,7 @@ def power(a, b, m=mod):
 
 
 def calculate(n, k, s):
-    if k == 1:
-        print(s[1:])
-        return
-
-    s = ls(s)
-    while k:
-        if s[0] == '1':
-            s[0] = '0'
-        else:
-            s = s[1:]
-        k -= 1
-    print(''.join(s))
+    
 
     return
 

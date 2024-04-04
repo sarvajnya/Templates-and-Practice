@@ -108,4 +108,6 @@ def calculate():
 
 
 if __name__ == '__main__':
-    pass
+    t = si()
+    for _ in range(t):
+        calculate()
