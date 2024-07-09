@@ -3,10 +3,6 @@
     Language: Python3
 '''
 
-# from sortedlist import *
-# import numpy
-
-
 from math import *
 from collections import *
 from itertools import *
@@ -17,14 +13,18 @@ import string
 from bisect import *
 from heapq import *
 from functools import *
-dic = defaultdict(int)  # OrderedDict()
-seen = set()
 int_max = float('inf')  # sys.maxsize
 int_min = float('-inf')
-# matrix = [[0]*() for _ in range()]
 sys.setrecursionlimit(1 << 30)
-mod = 1000000007
 input = sys.stdin.readline
+mod = 1000000007
+
+
+def print(*args, end='\n', sep=' '):
+    for i in args:
+        sys.stdout.write(str(i))
+        sys.stdout.write(sep)
+    sys.stdout.write(end)
 
 
 def si(types=None):
@@ -85,29 +85,19 @@ def lcm(a, b):
     return a*b//gcd(a, b)
 
 
-def print(*args, end='\n', sep=' '):
-    for i in args:
-        sys.stdout.write(str(i))
-        sys.stdout.write(sep)
-    sys.stdout.write(end)
-
-
 def power(a, b, m=mod):
     '''to return a^b%m in O(logn) time'''
     res = 1
+    a = a % m
     while b:
         if b & 1:
-            res *= a % m
-        a *= a % m
+            res = (res*a) % m
+        a = (a*a) % m
         b >>= 1
     return res % m
-
-
-def calculate():
-    return
 
 
 if __name__ == '__main__':
     t = si()
     for _ in range(t):
-        calculate()
+        n = si()
