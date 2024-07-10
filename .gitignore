@@ -3,5 +3,5 @@
 !template.py
 .cpp
 .vscode
-.js
-.html
+*.js
+*.html
