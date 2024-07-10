@@ -1,7 +1,7 @@
-.cph\
+.cph
 *.py
 !template.py
 .cpp
-.vscode\
+.vscode
 .js
 .html

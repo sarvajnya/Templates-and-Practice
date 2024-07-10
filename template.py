@@ -15,7 +15,7 @@ from heapq import *
 from functools import *
 int_max = float('inf')  # sys.maxsize
 int_min = float('-inf')
-sys.setrecursionlimit(1 << 30)
+# sys.setrecursionlimit(1 << 30)
 input = sys.stdin.readline
 mod = 1000000007
 
