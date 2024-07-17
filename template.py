@@ -97,7 +97,23 @@ def power(a, b, m=mod):
     return res % m
 
 
+def find_factors(n):
+    '''To find all factors of n except itself'''
+    factors = []
+    for i in range(1, int(n**0.5) + 1):
+        if n % i == 0:
+            factors.append(i)
+            if i != n // i:
+                factors.append(n // i)
+    factors.sort()
+    return factors
+
+def calc():
+    pass
+
+
 if __name__ == '__main__':
     t = si()
     for _ in range(t):
         n = si()
+        calc(n)
