@@ -108,12 +108,37 @@ def find_factors(n):
     factors.sort()
     return factors
 
-def calc():
-    pass
+
+def calc(n, a):
+    if n == 1:
+        return 1
+    m = max(a)
+    if a.count(m) % 2 != 0:
+        return 1
+    rem = (n-a.count(m))
+    if rem == 0:
+        return 0
+    c = Counter(a)
+    for k, v in c.items():
+        if v % 2 != 0:
+            return 1
+    # a2 = []
+    # for i in a:
+    #     if i != m:
+    #         a2 += [i]
+    # print(a2)
+    # if a2.count(max(a2)) % 2 != 0:
+    #     return 1
+    return 0
 
 
 if __name__ == '__main__':
     t = si()
     for _ in range(t):
         n = si()
-        calc(n)
+        a = li()
+        ans = calc(n, a)
+        if ans == 1:
+            print("YES")
+        else:
+            print("NO")
