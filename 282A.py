@@ -161,12 +161,20 @@ def find_factors(n):
 
 
 # @lru_cache(maxsize=None)
-def calc():
-    pass
+def calc(s):
+    x = 0
+    for i in s:
+        if '++' in i:
+            x += 1
+        elif '--' in i:
+            x -= 1
+
+    return x
 
 
 if __name__ == '__main__':
     t = si()
+    s = []
     for _ in range(t):
-        n = si()
-        calc()
+        s += [ss()]
+    print(calc(s))
