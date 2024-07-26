@@ -19,7 +19,7 @@ int_min = float('-inf')
 # input = sys.stdin.readline
 mod = 1000000007
 
-# BUFSIZE = 8192
+BUFSIZE = 8192
 
 
 # class FastIO(IOBase):
@@ -68,7 +68,7 @@ mod = 1000000007
 
 
 # sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
-def input(): return sys.stdin.readline().strip("\r\n")
+def input(): return sys.stdin.readline().rstrip("\r\n")
 
 
 def print(*args, end='\n', sep=' '):
@@ -160,14 +160,23 @@ def find_factors(n):
     return factors
 
 
-# @lru_cache(maxsize=None)
-def calc():
-    pass
+@lru_cache(maxsize=None)
+def calc(n, x):
+    # Precompute maximum b for each a
+    max_bs = [min((n - a * a) // (a + 1), x - a - 1) for a in range(1, x + 1)]
+
+    count = 0
+    for a in range(1, x + 1):
+        for b in range(1, max_bs[a - 1] + 1):
+            # Optimize inner loop based on specific problem characteristics
+            max_c = min((n - a * b) // (a + b), x - a - b)
+            count += max_c
+
+    return count
 
 
 if __name__ == '__main__':
     t = si()
     for _ in range(t):
-        n = si()
-        res = []
-        print('\n'.join(res).rstrip('\n'))
+        n, x = li()
+        print(calc(n, x))

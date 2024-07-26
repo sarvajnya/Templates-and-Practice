@@ -5,14 +5,14 @@
 
 from math import *
 from collections import *
-from itertools import *
+# from itertools import *
 import sys
-import os
-from io import BytesIO, IOBase
-import string
-from bisect import *
-from heapq import *
-from functools import *
+# import os
+# from io import BytesIO, IOBase
+# import string
+# from bisect import *
+# from heapq import *
+# from functools import *
 int_max = float('inf')  # sys.maxsize
 int_min = float('-inf')
 # sys.setrecursionlimit(1 << 15)
@@ -161,13 +161,44 @@ def find_factors(n):
 
 
 # @lru_cache(maxsize=None)
-def calc():
-    pass
+def calc(n, a, b, l):
+    ans = 0
+
+    # print(que)
+    start, end = l[0]-1, l[1]
+    res = end+10
+    if sorted(a[start:end]) == sorted(b[start:end]):
+        return 0
+    z1, z2 = Counter(a[start:end]), Counter(b[start:end])
+    # print(z1,z2)
+    for key in z1.keys():
+
+        try:
+            if (z1[key] > z2[key]):
+                ans += (z1[key] - z2[key])
+        except:
+            ans += z1[key]
+
+    res = min(res, ans)
+    ans = 0
+    for key in z2.keys():
+        try:
+            if (z2[key] > z1[key]):
+                ans += (z2[key] - z1[key])
+        except:
+            ans += z2[key]
+
+    return min(res, ans)
 
 
 if __name__ == '__main__':
     t = si()
+    res = []
     for _ in range(t):
-        n = si()
-        res = []
-        print('\n'.join(res).rstrip('\n'))
+        n, q = li()
+        a = ss()
+        b = ss()
+        # que=[]
+        for i in range(q):
+            res += [str(calc(n, a, b, li()))]
+    print('\n'.join(res).rstrip('\n'))
