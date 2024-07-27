@@ -1,7 +1,7 @@
 '''
+# created: 27.07.2024 23:39:21
     Author: Sarvajnya Pujari
-    Language: PyPy3
-    created: 27.07.2024 23:48:16 IST
+    Language: Python3
 '''
 import os
 import sys

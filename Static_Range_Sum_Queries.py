@@ -1,26 +1,26 @@
-'''
-    Author: Sarvajnya Pujari
-    Language: PyPy3
-    created: 27.07.2024 23:48:16 IST
-'''
-import os
-import sys
-import math
-from io import BytesIO, IOBase
-
-import random
-import os
-
-import bisect
-import typing
-from collections import Counter, defaultdict, deque
-from copy import deepcopy
-from functools import cmp_to_key, lru_cache, reduce
-from heapq import merge, heapify, heappop, heappush, heappushpop, nlargest, nsmallest
-from itertools import accumulate, combinations, permutations, count, product
-from operator import add, iand, ior, itemgetter, mul, xor
-from string import ascii_lowercase, ascii_uppercase, ascii_letters
 from typing import *
+from string import ascii_lowercase, ascii_uppercase, ascii_letters
+from operator import add, iand, ior, itemgetter, mul, xor
+from itertools import accumulate, combinations, permutations, count, product
+from heapq import merge, heapify, heappop, heappush, heappushpop, nlargest, nsmallest
+from functools import cmp_to_key, lru_cache, reduce
+from copy import deepcopy
+from collections import Counter, defaultdict, deque
+import typing
+import bisect
+import random
+import time
+from io import BytesIO, IOBase
+import math
+import sys
+import os
+f'''
+    Author: Sarvajnya Pujari
+    Language: Python3
+    Created: {time.time()}
+'''
+
+
 inf = math.inf
 
 mod = 1e9+7
@@ -163,10 +163,14 @@ def calc():
 
 
 if __name__ == '__main__':
-    t = si()
+    n,  q = li()
     outs = []
-    for _ in range(t):
-
-        pass
+    a = li()
+    pref = [0]*(n+1)
+    for i in range(n):
+        pref[i+1] = pref[i]+a[i]
+    for _ in range(q):
+        a, b = li()
+        outs += [pref[b]-pref[a-1]]
 
     print('\n'.join(map(str, outs)).strip())
