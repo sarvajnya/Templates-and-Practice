@@ -162,10 +162,39 @@ def calc():
 
 
 if __name__ == '__main__':
-    t = si()
+    h, w = li()
+    curr_i, curr_j = li()
+    curr_i -= 1
+    curr_j -= 1
+    a = []
+    for i in range(h):
+        # print(ls())
+        a += [ss()]
+    x = ss()
     outs = []
-    for _ in range(t):
+    for c in x:
 
-        pass
+        if c == 'U':
+            val = (curr_i - 1)
+            if val >= 0 and val < h:
+                if a[val][curr_j] == '.':
+                    curr_i -= 1
 
-    print('\n'.join(map(str, outs)).strip())
+        if c == 'D':
+            if 0 <= (curr_i + 1) < h and a[curr_i+1][curr_j] == '.':
+                curr_i += 1
+
+        if c == 'L':
+            if 0 <= (curr_j - 1) < w and a[curr_i][curr_j-1] == '.':
+                curr_j -= 1
+
+        if c == 'R':
+            if 0 <= (curr_j + 1) < w and a[curr_i][curr_j+1] == '.':
+                curr_j += 1
+
+        # print(c,curr_i,curr_j)
+
+    outs.extend([curr_i+1, curr_j+1])
+    # print(outs)
+
+    print(' '.join(map(str, outs)).strip())

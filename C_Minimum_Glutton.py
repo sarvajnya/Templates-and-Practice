@@ -162,10 +162,29 @@ def calc():
 
 
 if __name__ == '__main__':
-    t = si()
+    n, x, y = li()
+    a = li()
+    b = li()
+    a.sort(reverse=True)
+    b.sort(reverse=True)
     outs = []
-    for _ in range(t):
+    res = n+1
+    ans = 0
+    s = 0
+    for i in range(n):
+        s += a[i]
+        ans += 1
+        if s > x:
+            break
 
-        pass
+    res = min(res, ans)
 
-    print('\n'.join(map(str, outs)).strip())
+    ans = 0
+    s = 0
+    for i in range(n):
+        s += b[i]
+        ans += 1
+        if s > y:
+            break
+
+    print(min(res, ans))

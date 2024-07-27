@@ -162,10 +162,22 @@ def calc():
 
 
 if __name__ == '__main__':
-    t = si()
+    n = si()
     outs = []
-    for _ in range(t):
+    a = []
+    for _ in range(n):
 
-        pass
+        a += [ss()]
+    i = 0
+    while i < (n-1):
+        if a[i].lower() == 'sweet' and a[i+1].lower() == 'sweet':
+            i += 1
+            break
+        i += 1
+    if i == (n-1):
+        outs += ['Yes']
+
+    if not outs:
+        outs += ['No']
 
     print('\n'.join(map(str, outs)).strip())

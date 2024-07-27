@@ -161,11 +161,91 @@ def calc():
     pass
 
 
+def max_dishes(N, X, Y, A, B):
+    # Combine sweetness and saltiness into a list of tuples
+    max_dishes_count = 0
+
+    # Iterate over all possible subsets using bitmasking
+    for bitmask in range(1 << N):
+        current_sweetness = 0
+        current_saltiness = 0
+        count = 0
+        
+        for i in range(N):
+            if bitmask & (1 << i):
+                current_sweetness += A[i]
+                current_saltiness += B[i]
+                count += 1
+        
+        if current_sweetness <= X and current_saltiness <= Y:
+            max_dishes_count = max(max_dishes_count, count)
+    
+    return max_dishes_count
+
+
 if __name__ == '__main__':
-    t = si()
+
+    n, x, y = li()
+    a = [0]*n
+    b = [0]*n
+    for i in range(n):
+        a[i], b[i] = li()
+    z1 = sorted(zip(a, b))
+    z2 = sorted(zip(a, b), key=lambda t: t[1])
+    # print(*z)
+    res = 0
+    ans = 0
+    s1 = 0
+    s2 = 0
     outs = []
-    for _ in range(t):
+    for i in range(n):
+        s1 += z1[i][0]
+        s2 += z1[i][1]
+        ans += 1
+        if s1 > x or s2 > y:
+            break
 
-        pass
+    res = max(res, ans)
+    ans = 0
+    s1 = 0
+    s2 = 0
+    for i in range(n):
+        s1 += z2[i][0]
+        s2 += z2[i][1]
+        ans += 1
+        if s1 > x or s2 > y:
+            break
+    res = max(res, ans)
+    max_dishes_count = 0
+    current_sweetness = 0
+    current_saltiness = 0
+    left = 0
+    temp = []
+    for i in range(n):
+        temp += [abs(z1[i][0]-z1[i][1])]
 
-    print('\n'.join(map(str, outs)).strip())
+    z3 = list(zip(temp, a, b))
+    z3.sort()
+    ans = 0
+    s1 = 0
+    s2 = 0
+    for i in range(n):
+        s1 += z3[i][1]
+        s2 += z3[i][2]
+        ans += 1
+        if s1 > x or s2 > y:
+            break
+    res = max(res, ans)
+
+    for right in range(n):
+        current_sweetness += z1[right][0]
+        current_saltiness += z1[right][1]
+
+        while current_sweetness > x or current_saltiness > y:
+            current_sweetness -= z1[left][0]
+            current_saltiness -= z1[left][1]
+            left += 1
+
+        max_dishes_count = max(max_dishes_count, right - left + 1)
+
+    print(max(res, ans, max_dishes_count, max_dishes(n, x, y, a, b)))
