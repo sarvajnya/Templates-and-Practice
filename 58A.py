@@ -1,6 +1,7 @@
 '''
     Author: Sarvajnya Pujari
     Language: PyPy3
+    created: 30.07.2024 22:25:07 IST
 '''
 import os
 import sys
@@ -12,13 +13,13 @@ import os
 
 import bisect
 import typing
-from collections import *
-from copy import *
-from functools import *
-from heapq import *
+from collections import Counter, defaultdict, deque
+from copy import deepcopy
+from functools import cmp_to_key, lru_cache, reduce
+from heapq import merge, heapify, heappop, heappush, heappushpop, nlargest, nsmallest
 from itertools import *
-from operator import *
-from string import *
+from operator import add, iand, ior, itemgetter, mul, xor
+from string import ascii_lowercase, ascii_uppercase, ascii_letters
 from typing import *
 inf = math.inf
 
@@ -162,10 +163,85 @@ def calc():
 
 
 if __name__ == '__main__':
-    t = si()
-    outs = []
-    for _ in range(t):
+    s=ss()
+    # z=[]
+    # for k,b in groupby(s):
+    #     z += [[k,len(list(b))]]
+        
+    # for i in range(len(z)):
+    #     if z[i][0] == 'h' and (i+3) <= len(z) and z[i][1] >= 1:
+    #         f=0
+    #         for j in range(i+1,i+4):
+    #             if j == i+1:
+    #                 if z[j][0] == 'e' and z[j][1] >= 1:
+    #                     continue 
+    #                 else:
+    #                     break 
+    #             elif j == i+2:
+    #                 if z[j][0] == 'l' and z[j][1] >= 2:
+    #                     continue
+    #                 else:
+    #                     break
+    #             else:
+    #                 if z[j][0] == 'o' and z[j][1] >= 1:
+    #                     f=1                         
+    #                 else:
+    #                     break
+    #         if f:
+    #             print('YES')
+    #             break 
+    # if f == 0:
+    #     print('NO')
+    
+    i = 0
+    f=False
+    while i<len(s):
+        if s[i] == 'h':
+            j=i+1
+            while j<len(s):
+                if s[j] == 'e':
+                    
+                    k=j+1
+                    c=0
+                    while k<len(s):
+                        if s[k] == 'l':
+                            c += 1
+                        if c == 2:                            
+                            l = k+1
+                            while l<len(s):
+                                if s[l] == 'o':
+                                    f=True 
+                                    break
+                                l += 1 
+                            if f:
+                                break 
+                            k += 1 
+                        if f:
+                            break                      
+                        
+                            
+                        k += 1 
+                    if f:
+                        break
+                    j += 1           
+                            
+                    
+                j += 1
+            if f:
+                break
+            i += 1
+                
+        if f:
+            break
+        i += 1
+        
+    if f:
+        print('YES')
+    else:
+        print('NO')
+    
+            
+            
+    
 
-        pass
-
-    print('\n'.join(map(str, outs)).strip())
+    # print('\n'.join(map(str, outs)).strip())
