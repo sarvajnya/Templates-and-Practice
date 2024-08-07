@@ -1,6 +1,7 @@
 import datetime
-
-current_time = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
+import pytz
+current_time = datetime.datetime.now(pytz.timezone(
+    'Asia/Kolkata')).strftime("%d.%m.%Y %H:%M:%S")
 
 f = input()
 with open(f, 'r') as file:
