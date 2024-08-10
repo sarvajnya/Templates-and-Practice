@@ -1,6 +1,7 @@
 '''
     Author: Sarvajnya Pujari
     Language: PyPy3
+    created: 10.08.2024 21:04:14 IST
 '''
 import os
 import sys
@@ -166,6 +167,10 @@ if __name__ == '__main__':
     outs = []
     for _ in range(t):
 
-        pass
+        n=si()
+        a=li()
+        if n<=2:
+            print(*a)
+        
 
-    print('\n'.join(map(str, outs)).strip())
+    # print('\n'.join(map(str, outs)).strip())

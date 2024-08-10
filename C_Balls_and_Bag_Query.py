@@ -1,6 +1,7 @@
 '''
     Author: Sarvajnya Pujari
     Language: PyPy3
+    created: 10.08.2024 17:53:27 IST
 '''
 import os
 import sys
@@ -162,10 +163,26 @@ def calc():
 
 
 if __name__ == '__main__':
-    t = si()
+    q = si()
     outs = []
-    for _ in range(t):
+    a=[]
+    for _ in range(q):
 
-        pass
+        a += [ss()]
+    d=defaultdict(int)
+    for i in range(q):
+        val = list(map(int, a[i].split()))
+        if len(val) == 1:
+            # z=0
+            # for k, v in d.items():
+            #     if v:
+            #         z += 1 
+            outs += [len(d)]
+        elif val[0] == 1:
+            d[val[1]] += 1 
+        else:
+            d[val[1]] -= 1
+            if d[val[1]] <= 0:
+                del d[val[1]]
 
     print('\n'.join(map(str, outs)).strip())

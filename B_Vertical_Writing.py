@@ -1,6 +1,7 @@
 '''
     Author: Sarvajnya Pujari
     Language: PyPy3
+    created: 08.08.2024 00:37:34 IST
 '''
 import os
 import sys
@@ -162,10 +163,25 @@ def calc():
 
 
 if __name__ == '__main__':
-    t = si()
+    n = si()
     outs = []
-    for _ in range(t):
+    a = []
+    m = 0
+    for _ in range(n):
+        s = ss()
+        m = max(m, len(s))
+        a += [list(s)]
+    a.reverse()
+    ans = [[0]*n for _ in range(m)]
+    for i in range(n):
+        temp = a[i]
+        for j in range(m):
+            if j < len(temp):
+                ans[j][i] = temp[j]
+            else:
+                ans[j][i] = '*'
+    for i in range(m):
 
-        pass
+        outs += [''.join(ans[i]).rstrip('*')]
 
     print('\n'.join(map(str, outs)).strip())

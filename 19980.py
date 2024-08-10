@@ -1,6 +1,7 @@
 '''
     Author: Sarvajnya Pujari
     Language: PyPy3
+    created: 10.08.2024 20:06:05 IST
 '''
 import os
 import sys
@@ -166,6 +167,25 @@ if __name__ == '__main__':
     outs = []
     for _ in range(t):
 
-        pass
+        xc, yc, k = li()
+        # z1,z2 = set(),set()
+        if k == 1:
+            print(xc, yc)
+            continue
+        # a = k
+        # d1 = math.ceil((2*xc/k - 2*a)/(k-1))
+        # d2 = math.ceil((2*yc/k - 2*a)/(k-1))
+        x,y = k,k
+        print(x,y)
+        s1,s2 = k,k
+        for _ in range(k-2):
+            x += 1 
+            y += 1
+            s1 += x
+            s2 += y
+            
+            print(x, y)
+        
+        print(xc*k-s1, yc*k-s2)
 
-    print('\n'.join(map(str, outs)).strip())
+    # print('\n'.join(map(str, outs)).strip())

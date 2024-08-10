@@ -1,6 +1,7 @@
 '''
     Author: Sarvajnya Pujari
     Language: PyPy3
+    created: 08.08.2024 00:37:34 IST
 '''
 import os
 import sys
@@ -162,10 +163,12 @@ def calc():
 
 
 if __name__ == '__main__':
-    t = si()
+    n, t, a = li()
     outs = []
-    for _ in range(t):
-
-        pass
+    val = a+t
+    if t > a+n-val or a > t+n-val:
+        outs += ['Yes']
+    else:
+        outs += ['No']
 
     print('\n'.join(map(str, outs)).strip())
