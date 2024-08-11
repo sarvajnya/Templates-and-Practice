@@ -9,6 +9,9 @@ with open(f, 'r') as file:
 
 if 'created' not in lines[3]:
     lines = lines[:3] + [f"    created: {current_time} IST\n"] + lines[3:]
+else:
+    lines = lines[:3] + [f"    created: {current_time} IST\n"] + lines[4:]
+
 
 with open(f, 'w') as file:
     file.writelines(lines)
