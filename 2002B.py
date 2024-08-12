@@ -1,23 +1,8 @@
 '''
     Author: Sarvajnya Pujari
     Language: PyPy3
+    created: 11.08.2024 20:38:03 IST
 '''
-
-def main():
-    t = si()
-    output_list = []
-    for _ in range(t):
-
-        pass
-
-    print('\n'.join(map(str, output_list)).strip())
-    
-
-def calc():
-    pass
-    
-
-#Header_Files   
 import os
 import sys
 import math
@@ -45,7 +30,6 @@ def input(): return sys.stdin.readline().strip()
 BUFSIZE = 4096
 
 
-#Fast IO using PyRival
 class FastIO(IOBase):
     newlines = 0
 
@@ -173,5 +157,24 @@ def power(a, b, m=mod):
         b = b // 2
     return res % m
 
+
+def calc():
+    pass
+
+
 if __name__ == '__main__':
-    main()
+    t = si()
+    outs = []
+    for _ in range(t):
+
+        n=si()
+        a=li()
+        b=li()
+        ans="Alice"
+        if n <= 2:
+            ans = 'Bob'
+        outs+=[ans]
+        
+                
+
+    print('\n'.join(map(str, outs)).strip())
