@@ -25,30 +25,17 @@ def main():
     output_list = []
     for _ in range(t):
 
-            a, b = li()
-            xk, yk = li()
-            xq, yq = li()
-            ans = 0 
-            temp1 = set(((xk+a,yk+b),
-                           (xk-a, yk-b),
-                           (xk-a,yk+b),
-                           (xk+a, yk-b),
-                           (xk+b, yk+a),
-                           (xk+b, yk-a),
-                           (xk-b, yk+a),
-                           (xk-b, yk-a)))
-            temp2 = set(((xq+a, yq+b),
-                           (xq-a, yq-b),
-                           (xq-a, yq+b),
-                           (xq+a, yq-b),
-                           (xq+b, yq+a),
-                           (xq+b, yq-a),
-                           (xq-b, yq+a),
-                           (xq-b, yq-a)))
-            # print(temp1,temp2)
-            ans=len(temp1.intersection(temp2))
-            
-            output_list += [ans]
+        n = si()
+        a = li()
+        a[0] += 2
+        for i in range(1, n):
+            if (a[i]+1)%a[i-1]:
+                a[i]+=1
+                continue 
+            else:
+                a[i]+=2
+        a = ' '.join(map(str,a))
+        output_list += [a]
 
     print('\n'.join(map(str, output_list)).strip())
 
