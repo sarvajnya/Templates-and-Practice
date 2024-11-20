@@ -8,27 +8,47 @@ def main():
     output_list = []
     for _ in range(t):
 
-        n,k=li() 
-        a=sorted(li())
-        init=sum(a) 
-        j=0 
-        z=n-1 
-        op1,op2=[],[]
-        for i in range(k):
-            op1+=[a[j]+a[j+1]]
-            op2+=[a[z]]
-            j+=2 
-            z-=1
-        ans=0
-        for i in range(k-1, -1, -1):
-            if op1[i] <= op2[i]:
-                ans+=op1[i] 
-            else:
-                ans+=op2[i]
+        n=si() 
+        a=li() 
+        b=li()
+        d={} 
+        for i in range(n):
+            d[a[i]]=b[i] 
+        m1=max(d.keys()) 
+        d=OrderedDict(sorted(d.items()))
+        m=0
+        f=False
+        temp=list(d.keys())
+        j=n-1
+        i=0   
+        while i<j:
+            al=max(temp[i], d[temp[i]])
+            bob=max(temp[j], d[temp[j]])
+            i+=1
+            if al>bob:
+                f=True
+                break
             
-                 
-        output_list += [init-(ans)]
+        # for k,v in d.items():
+        #     choose=max(k,v) 
+        #     if choose > m and m:
+        #         f=True
+        #         break 
+        #     m=choose
         
+            
+        choose = max(m1, d[m1]) 
+        bob=0
+        for i in range(n-1):
+            bob=max(temp[i], d[temp[i]])
+        if choose > bob:
+            f=True
+            
+        
+        if f:
+            output_list += ['Yes']
+        else:
+            output_list += ['No']
 
     print('\n'.join(map(str, output_list)).strip())
     

@@ -8,27 +8,16 @@ def main():
     output_list = []
     for _ in range(t):
 
-        n,k=li() 
-        a=sorted(li())
-        init=sum(a) 
-        j=0 
-        z=n-1 
-        op1,op2=[],[]
-        for i in range(k):
-            op1+=[a[j]+a[j+1]]
-            op2+=[a[z]]
-            j+=2 
-            z-=1
+        n,m=li() 
+        a=li() 
+        b=li()
         ans=0
-        for i in range(k-1, -1, -1):
-            if op1[i] <= op2[i]:
-                ans+=op1[i] 
+        for i in range(len(b)):
+            if a[b[i]-1]:
+                a[b[i]-1]-=1 
             else:
-                ans+=op2[i]
-            
-                 
-        output_list += [init-(ans)]
-        
+                ans+=1 
+        output_list += [ans]
 
     print('\n'.join(map(str, output_list)).strip())
     
