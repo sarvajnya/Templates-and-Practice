@@ -3,24 +3,25 @@
     Language: PyPy3
 '''
 
+
+
+
+
 def main():
     t = si()
     output_list = []
     for _ in range(t):
 
-        n,k=li() 
-        a=sorted(li())
+        n=si() 
+        ans=n+1
+        a=f"{1} {n-1}"
         
-        pref=[0]*(n+1)
-        for i in range(n):
-            pref[i+1]=pref[i]+a[i]
-        ans=0
-        for i in range(k+1):
-            ans=max(ans, pref[n-(k-i)] - pref[2*i])
-            
-                 
-        output_list += [(ans)]
-        
+        for i in range(2, int(math.sqrt(n))+1):
+            if n%i == 0:
+                ans=n//i
+                a = f"{n//i} {n-ans}"
+                break
+        output_list += [''.join(a)]
 
     print('\n'.join(map(str, output_list)).strip())
     
