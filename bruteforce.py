@@ -1,25 +1,10 @@
+a = [4 ,5 ,8 ,8 ,8 ,4, 4 ,5 ,2, 3]
+b = [4, 5, 8, 2, 8, 4, 3, 5, 2, 3]
+n = len(a)
 from template import *
-a=list(range(1,5))
-n=len(a)
-
-
-def calc(a):
-    n = len(a)
-    tar = n+1
-
-    pref = [0]*(n+1)
-    for i in range(n):
-        pref[i+1] = pref[i]+a[i]
-    f = True
-    for i in range(n+1):
-        j = 0
-        while j < i:
-            if (pref[i]-pref[j]) % tar == 0:
-                f = False
-                break
-
-            j += 1
-    return f
-for i in permutations(a, n):
-    if calc(i):
-        print(*i)
+for i in range(n):
+    d = Counter(b[:i+1])
+    if max(d.values()) > d[a[i]]:
+        print(False, i)
+        exit(0) 
+print(True)
