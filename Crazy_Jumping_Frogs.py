@@ -8,7 +8,53 @@ def main():
     output_list = []
     for _ in range(t):
 
-        pass
+        n=si() 
+        a=li() 
+        seen = set() 
+        ans = 0        
+            
+        b = a.copy()
+        while True:
+         
+        # if 1:
+            j=0 
+            while j<n:
+                if j == 0:
+                    k=1
+                    jump = a[k]
+                    if jump == a[j] and k != j:
+                        k += 1
+                        continue 
+                    
+                    
+                else:
+                    k=0
+                    jump = a[k]
+                    if jump == a[j] and k != j:
+                        k += 1
+                        continue
+                
+                if jump > a[j]:
+                    b[j] += 1
+                else:
+                    b[j] -= 1     
+                
+                j += 1           
+                
+            a=b 
+            b=a.copy()
+            
+            state = tuple(a) 
+            if state in seen:
+                break 
+            seen.add(state)
+        # print(seen)
+        ans = 0
+        ans = max(ans, max(Counter(seen.pop()).values()))
+        output_list += [ans]
+            
+                    
+                
 
     print('\n'.join(map(str, output_list)).strip())
     

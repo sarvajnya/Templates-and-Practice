@@ -8,7 +8,20 @@ def main():
     output_list = []
     for _ in range(t):
 
-        pass
+        a = li() 
+        ans = 0
+        for i in range(-1000, 1001):
+            c=0
+            a2 = i 
+            if (a2 == a[0]+a[1]):
+                c+=1
+            if (a[2] == a2+a[1]):
+                c+=1
+            if (a[3] == a2+a[2]):
+                c+=1
+            ans = max(c, ans)
+        output_list += [ans]
+            
 
     print('\n'.join(map(str, output_list)).strip())
     
@@ -46,13 +59,6 @@ BUFSIZE = 4096
 
 
 #Fast IO using PyRival
-
-RANDOM = random.randrange(2**62)
-
-
-def Wrapper(x):
-  return x ^ RANDOM
-
 class FastIO(IOBase):
     newlines = 0
 

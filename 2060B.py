@@ -3,39 +3,66 @@
     Language: PyPy3
 '''
 
+from typing import *
+from string import *
+from operator import *
+from itertools import *
+from heapq import *
+from functools import *
+from copy import *
+from collections import *
+import typing
+import bisect
+import random
+from io import BytesIO, IOBase
+import math
+import sys
+import os
+
+
 def main():
     t = si()
     output_list = []
     for _ in range(t):
 
-        pass
+        n, m = li()
+        d = {}
+        a = []
+        for i in range(n):
+            a += [li()]
+            
+            d[(i+1)] = a[-1]
+        d=OrderedDict(sorted(d.items(), key=lambda z:z[1]))
+        a.sort()
+        f=True 
+        for i in range(n):
+            a[i] = list(sorted(a[i]))
+        
+        a = [[a[j][i] for j in range(n)] for i in range(m)]
+        
+        a = [a[i][j] for i in range(m) for j in range(n)]
+        
+                
+                    
+                
+                
+                
+            
+        if a == list(range(n*m)):
+            output_list += [' '.join(map(str, d.keys()))] 
+        else:
+            output_list += [-1]
 
     print('\n'.join(map(str, output_list)).strip())
-    
+
 
 def calc():
     pass
-    
 
-#Header_Files   
-import os
-import sys
-import math
-from io import BytesIO, IOBase
 
-import random
-import os
+# Header_Files
 
-import bisect
-import typing
-from collections import *
-from copy import *
-from functools import *
-from heapq import *
-from itertools import *
-from operator import *
-from string import *
-from typing import *
+
 inf = math.inf
 
 mod = 1e9+7
@@ -45,14 +72,12 @@ def input(): return sys.stdin.readline().strip()
 BUFSIZE = 4096
 
 
-#Fast IO using PyRival
-
+# Fast IO using PyRival
 RANDOM = random.randrange(2**62)
 
 
 def Wrapper(x):
   return x ^ RANDOM
-
 class FastIO(IOBase):
     newlines = 0
 
@@ -179,6 +204,7 @@ def power(a, b, m=mod):
         a = (a*a) % m
         b = b // 2
     return res % m
+
 
 if __name__ == '__main__':
     main()

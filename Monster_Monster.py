@@ -8,7 +8,16 @@ def main():
     output_list = []
     for _ in range(t):
 
-        pass
+        n, x = li() 
+        a = li() 
+        a.sort(reverse=True)
+        c=0 
+        m = 0
+        for i in range(n):
+            m=max(m, c*x+a[i])
+            c += 1
+        output_list += [m]
+            
 
     print('\n'.join(map(str, output_list)).strip())
     

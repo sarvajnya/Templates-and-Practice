@@ -8,7 +8,20 @@ def main():
     output_list = []
     for _ in range(t):
 
-        pass
+        n, x = li()
+        a=li() 
+        i=0 
+        a.sort()
+        tot = sum(a) 
+        
+        while i<n:
+            if tot <= x:
+                break
+            else:
+                tot -= x 
+                i += 1 
+        output_list += [i+1]
+            
 
     print('\n'.join(map(str, output_list)).strip())
     
