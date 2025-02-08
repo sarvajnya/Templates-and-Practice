@@ -4,14 +4,26 @@
 '''
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
+    t = si()
+    output_list = []
+    for _ in range(t):
 
-    #     pass
+        n=si() 
+        a=li() 
+        b=li()
+       
+        s=set()
+        
+        for i in range(n):
+            for j in range(n):
+                s.add(Wrapper(a[i]+b[j]))
+        if len(s) >= 3 :
+            output_list += ['YES']
+        else:
+            output_list += ['NO']
+                
 
-    # print('\n'.join(map(str, output_list)).strip())
-    pass
+    print('\n'.join(map(str, output_list)).strip())
     
 
 def calc():

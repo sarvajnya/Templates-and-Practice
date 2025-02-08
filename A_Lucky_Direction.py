@@ -11,7 +11,24 @@ def main():
     #     pass
 
     # print('\n'.join(map(str, output_list)).strip())
-    pass
+    s=ss() 
+    if s == 'N':
+        print("S")
+    elif s == 'S':
+        print('N')
+    elif s == 'E':
+        print('W')
+    elif s == 'W':
+        print('E')
+    elif s == 'NE':
+        print('SW')
+    elif s == 'SW':
+        print('NE')
+    elif s == 'NW':
+        print('SE')
+    elif s == 'SE':
+        print('NW')
+    
     
 
 def calc():

@@ -4,14 +4,27 @@
 '''
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
+    t = si()
+    output_list = []
+    for _ in range(t):
 
-    #     pass
+        n, k = li() 
+        a=li() 
+        ans1 = 0
+        i=1 
+        while i<n-1:
+            if (a[i] > a[i-1] + a[i+1]):
+                ans1 += 1 
+            i += 1
+            
+            
+        if k == 1:     
+            n -= 2   
+            output_list += [max(ans1, math.ceil(n/2))]
+        else:
+            output_list += [ans1]
 
-    # print('\n'.join(map(str, output_list)).strip())
-    pass
+    print('\n'.join(map(str, output_list)).strip())
     
 
 def calc():

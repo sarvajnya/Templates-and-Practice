@@ -4,14 +4,15 @@
 '''
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
+    t = si()
+    output_list = []
+    for _ in range(t):
 
-    #     pass
+        n, k = li() 
+        a=li() 
+        
 
-    # print('\n'.join(map(str, output_list)).strip())
-    pass
+    print('\n'.join(map(str, output_list)).strip())
     
 
 def calc():

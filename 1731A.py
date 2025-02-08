@@ -4,14 +4,19 @@
 '''
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
+    t = si()
+    output_list = []
+    for _ in range(t):
 
-    #     pass
+        n=si() 
+        a=li() 
+        prod=1 
+        for i in range(n):
+            prod *= a[i] 
+        ans = prod + n-1
+        output_list += [ans*2022]
 
-    # print('\n'.join(map(str, output_list)).strip())
-    pass
+    print('\n'.join(map(str, output_list)).strip())
     
 
 def calc():

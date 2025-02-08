@@ -11,7 +11,11 @@ def main():
     #     pass
 
     # print('\n'.join(map(str, output_list)).strip())
-    pass
+    l=li() 
+    if l[0]*l[1] == l[2] or l[2]*l[1] == l[0] or l[0]*l[2] == l[1]:
+        print('Yes')
+    else:
+        print('No')
     
 
 def calc():

@@ -4,14 +4,31 @@
 '''
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
+    t = si()
+    output_list = []
+    for _ in range(t):
 
-    #     pass
+        x, y = li() 
+        ans = ['0']*(x+y)
+        n=x+y
+        i=0 
+        c=0
+        while c<x//2:
+            ans[i] = '1'
+            ans[n-i-1] = '1'
+            i += 1
+            c+=1
+        c=0
+        while c<y//2:
+            ans[i] = '2'
+            ans[n-i-1] = '2'
+            
+            i += 1
+            c+=1
+        
+        output_list += [''.join(ans)]
 
-    # print('\n'.join(map(str, output_list)).strip())
-    pass
+    print('\n'.join(map(str, output_list)).strip())
     
 
 def calc():

@@ -11,7 +11,17 @@ def main():
     #     pass
 
     # print('\n'.join(map(str, output_list)).strip())
-    pass
+    n, m = li() 
+    a=li() 
+    res = ''
+    c=0
+    for i in range(1, n+1):
+        if i not in a:
+            res += f"{i} "
+            c+=1
+    print(c)
+    print(res.strip())
+    
     
 
 def calc():

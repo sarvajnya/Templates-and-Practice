@@ -71,7 +71,7 @@ mod = 1000000007
 def input(): return sys.stdin.readline().strip("\r\n")
 
 
-def print(*args, end='\n', sep=' '):
+def print(*args, end='\n', sep=''):
     for i in args:
         sys.stdout.write(str(i))
         sys.stdout.write(sep)

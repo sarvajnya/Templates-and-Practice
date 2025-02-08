@@ -4,14 +4,42 @@
 '''
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
+    t = si()
+    output_list = []
+    for _ in range(t):
 
-    #     pass
+        n,x = li() 
+        a=li() 
+        i=0 
+        ans = 0
+        while i<n:
+            op=0 
+            j=i 
+            b=a.copy()
+            
+            while j<n-1:
+                if b[j] <= b[j+1]:
+                    j += 1
+                    continue
+                elif op == 0 and b[j] > b[j+1]:                    
+                    val = b[j+1]*x
+                    if b[j] <= val:                        
+                        op = 1
+                        b[j+1] = val
+                        j += 1
+                        
+                    else:
+                        break 
+                else:
+                    break 
+                
+            ans = max(ans, j-i+1)
+            
+            i += 1
+        output_list += [ans]
+            
 
-    # print('\n'.join(map(str, output_list)).strip())
-    pass
+    print('\n'.join(map(str, output_list)).strip())
     
 
 def calc():
