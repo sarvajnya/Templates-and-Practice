@@ -4,23 +4,21 @@
 '''
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
-    # print('\n'.join(map(str, output_list)).strip())
+    t = si()
+    output_list = []
+    for _ in range(t):
+
+        n=si()
+        a=li()
+        output_list += [len(set(a))]
+
+    print('\n'.join(map(str, output_list)).strip())
     pass
-
-'''
-res = [[a[j][i] for j in range(len(a))] for i in range(len(a[0]))] #transpose of matrix
-if f:
-    output_list += ['yes']
-else:
-    output_list += ['no']
-
-'''
+    
 
 def calc():
     pass
+    
 
 #Header_Files   
 import os

@@ -4,23 +4,34 @@
 '''
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
-    # print('\n'.join(map(str, output_list)).strip())
+    t = si()
+    output_list = []
+    for _ in range(t):
+
+        n=si()
+        s=ss()
+        ans = [0]*(n)
+        k = 1
+        j = n
+        for i in range(len(s)-1, -1, -1):
+            if s[i] == '<':
+                ans[i+1] = k 
+                k += 1
+            elif s[i] == '>':
+                ans[i+1] = j
+                j -= 1
+        for i in range(1, n+1):
+            if i not in ans:
+                ans[ans.index(0)] = i
+        output_list += [' '.join(map(str,ans))] 
+
+    print('\n'.join(map(str, output_list)).strip())
     pass
-
-'''
-res = [[a[j][i] for j in range(len(a))] for i in range(len(a[0]))] #transpose of matrix
-if f:
-    output_list += ['yes']
-else:
-    output_list += ['no']
-
-'''
+    
 
 def calc():
     pass
+    
 
 #Header_Files   
 import os

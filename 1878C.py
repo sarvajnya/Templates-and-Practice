@@ -4,14 +4,28 @@
 '''
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
-    # print('\n'.join(map(str, output_list)).strip())
+    t = si()
+    output_list = []
+    for _ in range(t):
+
+        n, k, x = li()
+        val = (k*(k+1))//2
+        if val > x:
+            output_list += ['no']
+            continue
+        temp = n-k 
+        temp2 = (n*(n+1))//2
+        temp = (temp*(temp+1))//2
+        # print( temp2-temp)
+        if temp2-temp < x:
+            output_list += ['no']
+        else:
+            output_list += ['yes']
+
+    print('\n'.join(map(str, output_list)).strip())
     pass
 
 '''
-res = [[a[j][i] for j in range(len(a))] for i in range(len(a[0]))] #transpose of matrix
 if f:
     output_list += ['yes']
 else:
@@ -21,7 +35,6 @@ else:
 
 def calc():
     pass
-
 #Header_Files   
 import os
 import sys
