@@ -8,38 +8,59 @@ def main():
     output_list = []
     for _ in range(t):
 
-        p = ss()
-        s = ss()
-        if s == p:
-            output_list += ['YES']
-            continue
-        i, j = 0, 0 
-        f = True 
-
-        while i<len(p) and j<len(s):
-            if p[i] == s[j]:
-                # print(i, j)
-                if j < len(s)-1:
-                    if s[j] == s[j+1] == p[i]:
-                        j += 2
-                    else:
-                        j += 1 
+        n=si()
+        a=list(ss())
+        b=list(ss())
+        o = 0 
+        e = 0      
+        f=True
+        for i in range(n):
+            if b[i] == '0':
+                if i%2 == 0:
+                    e += 1
                 else:
-                    j += 1
+                    o += 1
+        # print(o, e)
+        for i in range(n):
+            if a[i] == '1':
+                val = i-1  
+                if i == 0:
+                    if o > 0:
+                        o -= 1
+                        a[i] = '0'   
+                elif i == n-1:
+                    if val%2 == 0:
+                        if e > 0:
+                            a[i] = '0'
+                            e -= 1
+                    else:
+                        if o > 0:
+                            a[i] = '0'
+                            o -= 1
+                
+                else:  
+                    if val%2 == 0:              
+                        if e > 0:
+                            a[i] = '0'
+                            e -= 1
+                    else:
+                        if o > 0:
+                            a[i] = '0'
+                            o -= 1
+                    
 
-            else:
-               
-               f = False 
-               break 
-
-
-            i += 1
-            # print(j)
-        if f and i == len(p) and j == len(s):
-           output_list += ['YES']
+                
+                    
+            
+       
+        for i in range(n):
+            if a[i] == '1':
+                f=False 
+                break 
+        if f:
+            output_list += ['YES']
         else:
-            output_list += ["NO"] 
-
+            output_list += ['NO']
 
     print('\n'.join(map(str, output_list)).strip())
     

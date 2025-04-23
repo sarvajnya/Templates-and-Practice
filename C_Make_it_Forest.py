@@ -4,48 +4,54 @@
 '''
 
 def main():
-    t = si()
-    output_list = []
-    for _ in range(t):
+    n, m = li()
+    g= [] 
+    for i in range(m):
+        g += [li()]
+    nodes = set()
+    for u, v in g:
+        nodes.add(u)
+        nodes.add(v)
+    if not g:
+        print(0)
+        exit(0)
+    n = max(nodes) + 1  
+    uf = UnionFind(n)
+    c = 0
+    for u, v in g:
+        if not uf.union(u, v): 
+            c += 1
+    print(c)
 
-        p = ss()
-        s = ss()
-        if s == p:
-            output_list += ['YES']
-            continue
-        i, j = 0, 0 
-        f = True 
-
-        while i<len(p) and j<len(s):
-            if p[i] == s[j]:
-                # print(i, j)
-                if j < len(s)-1:
-                    if s[j] == s[j+1] == p[i]:
-                        j += 2
-                    else:
-                        j += 1 
-                else:
-                    j += 1
-
-            else:
-               
-               f = False 
-               break 
-
-
-            i += 1
-            # print(j)
-        if f and i == len(p) and j == len(s):
-           output_list += ['YES']
-        else:
-            output_list += ["NO"] 
-
-
-    print('\n'.join(map(str, output_list)).strip())
     
 
 def calc():
     pass
+
+class UnionFind:
+    def __init__(self, n):
+        self.parent = list(range(n))
+        self.rank = [1] * n
+    
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])  
+        return self.parent[x]
+    
+    def union(self, x, y):
+        t1 = self.find(x)
+        t2 = self.find(y)
+        if t1 == t2:
+            return False  
+        if self.rank[t1] > self.rank[t2]:
+            self.parent[t2] = t1
+        elif self.rank[t1] < self.rank[t2]:
+            self.parent[t1] = t2
+        else:
+            self.parent[t2] = t1
+            self.rank[t1] += 1
+        return True
+
     
 
 #Header_Files   

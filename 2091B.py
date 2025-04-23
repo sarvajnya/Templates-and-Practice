@@ -8,37 +8,28 @@ def main():
     output_list = []
     for _ in range(t):
 
-        p = ss()
-        s = ss()
-        if s == p:
-            output_list += ['YES']
-            continue
-        i, j = 0, 0 
-        f = True 
-
-        while i<len(p) and j<len(s):
-            if p[i] == s[j]:
-                # print(i, j)
-                if j < len(s)-1:
-                    if s[j] == s[j+1] == p[i]:
-                        j += 2
-                    else:
-                        j += 1 
-                else:
-                    j += 1
-
+        n, x = li() 
+        a = li()
+        a.sort(reverse=True)
+        res= 0 
+        c = 1
+        m = inf
+        for i in range(n):
+            m = min(m, a[i])
+            temp = m*c
+            if temp < x:
+                c += 1 
+            
             else:
-               
-               f = False 
-               break 
-
-
-            i += 1
-            # print(j)
-        if f and i == len(p) and j == len(s):
-           output_list += ['YES']
-        else:
-            output_list += ["NO"] 
+                c = 1
+                res += 1
+                m = inf
+            
+        # if c > 1:
+        #     temp = a[j]*c
+        #     if temp >= x:
+        #         res += 1
+        output_list += [res]
 
 
     print('\n'.join(map(str, output_list)).strip())

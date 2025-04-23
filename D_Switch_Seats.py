@@ -8,38 +8,32 @@ def main():
     output_list = []
     for _ in range(t):
 
-        p = ss()
-        s = ss()
-        if s == p:
-            output_list += ['YES']
+        n=si()
+        a=li()
+        if n == 1:
+            print(0)
             continue
-        i, j = 0, 0 
-        f = True 
-
-        while i<len(p) and j<len(s):
-            if p[i] == s[j]:
-                # print(i, j)
-                if j < len(s)-1:
-                    if s[j] == s[j+1] == p[i]:
-                        j += 2
-                    else:
-                        j += 1 
-                else:
-                    j += 1
-
+        d=defaultdict(int)
+        for i in range(0, 2*n, 2):
+            if i == 0:
+                if abs(a[i]-a[i+1]) == 1 and a[i+1] != a[i+2]:
+                    d[tuple(sorted([a[i], a[i+1]]))] += 1
+            
             else:
-               
-               f = False 
-               break 
 
 
-            i += 1
-            # print(j)
-        if f and i == len(p) and j == len(s):
-           output_list += ['YES']
-        else:
-            output_list += ["NO"] 
-
+                if abs(a[i]-a[i+1]) >= 1 and abs(a[i]-a[i-1]) == 1:
+                    d[tuple(sorted([a[i], a[i-1]]))] += 1 
+                if abs(a[i]-a[i+1]) == 1 and abs(a[i]-a[i-1]) >= 1:
+                    d[tuple(sorted([a[i], a[i+1]]))] += 1 
+            
+            # print(d, a[i])
+        ans = 0
+        # print(d)
+        for i in d.values():
+            if i == 2:
+                ans += 1
+        print(ans)
 
     print('\n'.join(map(str, output_list)).strip())
     

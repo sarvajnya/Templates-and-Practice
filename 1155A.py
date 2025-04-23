@@ -4,49 +4,23 @@
 '''
 
 def main():
-    t = si()
-    output_list = []
-    for _ in range(t):
+    # t = si()
+    # output_list = []
+    # for _ in range(t):
+    # print('\n'.join(map(str, output_list)).strip())
+    pass
 
-        p = ss()
-        s = ss()
-        if s == p:
-            output_list += ['YES']
-            continue
-        i, j = 0, 0 
-        f = True 
+'''
+res = [[a[j][i] for j in range(len(a))] for i in range(len(a[0]))] #transpose of matrix
+if f:
+    output_list += ['yes']
+else:
+    output_list += ['no']
 
-        while i<len(p) and j<len(s):
-            if p[i] == s[j]:
-                # print(i, j)
-                if j < len(s)-1:
-                    if s[j] == s[j+1] == p[i]:
-                        j += 2
-                    else:
-                        j += 1 
-                else:
-                    j += 1
-
-            else:
-               
-               f = False 
-               break 
-
-
-            i += 1
-            # print(j)
-        if f and i == len(p) and j == len(s):
-           output_list += ['YES']
-        else:
-            output_list += ["NO"] 
-
-
-    print('\n'.join(map(str, output_list)).strip())
-    
+'''
 
 def calc():
     pass
-    
 
 #Header_Files   
 import os
@@ -80,9 +54,9 @@ BUFSIZE = 4096
 
 RANDOM = random.randrange(2**62)
 
+
 def Wrapper(x):
   return x ^ RANDOM
-
 
 class FastIO(IOBase):
     newlines = 0
@@ -135,7 +109,7 @@ class IOWrapper(IOBase):
 sys.stdout = IOWrapper(sys.stdout)
 
 
-def print(*args, end='\n', sep=' '):
+def print(*args, end='\n', sep=''):
     for i in args:
         sys.stdout.write(str(i))
         sys.stdout.write(sep)

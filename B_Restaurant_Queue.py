@@ -4,44 +4,19 @@
 '''
 
 def main():
-    t = si()
-    output_list = []
-    for _ in range(t):
-
-        p = ss()
-        s = ss()
-        if s == p:
-            output_list += ['YES']
-            continue
-        i, j = 0, 0 
-        f = True 
-
-        while i<len(p) and j<len(s):
-            if p[i] == s[j]:
-                # print(i, j)
-                if j < len(s)-1:
-                    if s[j] == s[j+1] == p[i]:
-                        j += 2
-                    else:
-                        j += 1 
-                else:
-                    j += 1
-
-            else:
-               
-               f = False 
-               break 
-
-
-            i += 1
-            # print(j)
-        if f and i == len(p) and j == len(s):
-           output_list += ['YES']
+    q = si()
+    ans = []
+    for _ in range(q):
+        a = li()
+        if len(a) == 2:
+            ans += [a[1]]
         else:
-            output_list += ["NO"] 
+            print(ans[0])
+            ans.remove(ans[0])
 
+        
 
-    print('\n'.join(map(str, output_list)).strip())
+    # print('\n'.join(map(str, output_list)).strip())
     
 
 def calc():

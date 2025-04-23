@@ -8,40 +8,20 @@ def main():
     output_list = []
     for _ in range(t):
 
-        p = ss()
-        s = ss()
-        if s == p:
-            output_list += ['YES']
+        n,k = li()
+        a=li()
+        if k == 1:
+            if n == 2:
+                print(sum(a))
+                continue
+ 
+            print(max(a[0] + a[-1], max(a[0], a[-1]) + max(a[1:-1])))
             continue
-        i, j = 0, 0 
-        f = True 
-
-        while i<len(p) and j<len(s):
-            if p[i] == s[j]:
-                # print(i, j)
-                if j < len(s)-1:
-                    if s[j] == s[j+1] == p[i]:
-                        j += 2
-                    else:
-                        j += 1 
-                else:
-                    j += 1
-
-            else:
-               
-               f = False 
-               break 
+ 
+        print(sum(sorted(a, reverse=True)[:k+1]))
 
 
-            i += 1
-            # print(j)
-        if f and i == len(p) and j == len(s):
-           output_list += ['YES']
-        else:
-            output_list += ["NO"] 
-
-
-    print('\n'.join(map(str, output_list)).strip())
+    
     
 
 def calc():

@@ -8,44 +8,27 @@ def main():
     output_list = []
     for _ in range(t):
 
-        p = ss()
-        s = ss()
-        if s == p:
-            output_list += ['YES']
+        x, k = li()
+        if x%2 == 0 and x>2:
+            output_list += ['NO']
             continue
-        i, j = 0, 0 
-        f = True 
-
-        while i<len(p) and j<len(s):
-            if p[i] == s[j]:
-                # print(i, j)
-                if j < len(s)-1:
-                    if s[j] == s[j+1] == p[i]:
-                        j += 2
-                    else:
-                        j += 1 
-                else:
-                    j += 1
-
+        if k < 3:
+            n = (int(str(x)*k))
+            if calc(n):
+                output_list += ['YES']
             else:
-               
-               f = False 
-               break 
-
-
-            i += 1
-            # print(j)
-        if f and i == len(p) and j == len(s):
-           output_list += ['YES']
+                output_list += ['NO']
         else:
-            output_list += ["NO"] 
-
+            output_list += ['NO']
 
     print('\n'.join(map(str, output_list)).strip())
     
 
-def calc():
-    pass
+def calc(n):
+    for i in range(2, int(math.sqrt(n))+1):
+        if n%i == 0:
+            return False 
+    return n>1
     
 
 #Header_Files   

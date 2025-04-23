@@ -8,38 +8,56 @@ def main():
     output_list = []
     for _ in range(t):
 
-        p = ss()
-        s = ss()
-        if s == p:
-            output_list += ['YES']
-            continue
-        i, j = 0, 0 
-        f = True 
-
-        while i<len(p) and j<len(s):
-            if p[i] == s[j]:
-                # print(i, j)
-                if j < len(s)-1:
-                    if s[j] == s[j+1] == p[i]:
-                        j += 2
-                    else:
-                        j += 1 
-                else:
-                    j += 1
-
+        n, k = li() 
+        a=li() 
+        b = li() 
+        ans = 0
+        temp = list(range(1, 10))
+        temp *= 2
+        deb = 0
+        for i in range(n):
+            f = False 
+            x = inf
+            for j in range(len(temp)):
+                if temp[j] == a[i]:
+                    f = True 
+                    x = j 
+                if f and temp[j] == b[i]:
+                    x = abs(x-j)
+                    break 
+            y = inf
+            f = False 
+            for j in range(len(temp)):
+                if temp[j] == b[i]:
+                    f = True 
+                    y = j 
+                if f and temp[j] == a[i]:
+                    y = abs(y-j)
+                    break
+            if i < n-1:
+                ans += min(x, y)
             else:
-               
-               f = False 
-               break 
+                if ans+max(x,y) <= k:
+                    ans += max(x,y)
+                else:
+                    ans += min(x, y)
+            deb += max(x,y)   
+          
+        print(deb)  
+        k -= ans 
+        if k > 0:
+            k %= 9
 
-
-            i += 1
-            # print(j)
-        if f and i == len(p) and j == len(s):
-           output_list += ['YES']
+        if k < 0:
+            output_list += ['No']
+        
+        elif  k%2 == 0:
+            output_list += ['Yes']
+        
         else:
-            output_list += ["NO"] 
-
+            output_list += ['No']
+       
+            
 
     print('\n'.join(map(str, output_list)).strip())
     
