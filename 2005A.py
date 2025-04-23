@@ -8,20 +8,6 @@ def main():
     output_list = []
     for _ in range(t):
         n=si()
-        if n<=10:
-            output_list += [n]
-        elif n<=100:
-            output_list += [n//10 + 9]
-        elif n<=1e3:
-            output_list += [18 + n//100]
-        elif n<=1e4:
-            output_list += [27 + n//1000]
-        elif n<=1e5:
-            output_list += [36 + n//10000]
-        elif n <= 1e6:
-            output_list += [45 + n//100000]
-        else:
-            output_list += [54 + n//1000000]
         
     print('\n'.join(map(str, output_list)).strip())
     pass
