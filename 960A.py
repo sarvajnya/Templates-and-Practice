@@ -4,30 +4,23 @@
 '''
 
 def main():
-    t = si()
-    output_list = []
-    for _ in range(t):
-        n=si()
-        s='aeiou'
-        if n<=5:
-            output_list += [s[:n]]
-            continue
-        j = 0
-        for i in range(5, n):
-            s += s[j] 
-            j += 1
-            j %= 5
-            
-
-        
-        s=sorted(s)
-        s = ''.join(s)
-        output_list += [s[:n]]
-        
+    
+        s=ss()
+ 
+        c=Counter(s)
+        f=True
+        for i in range(len(s)-1):
+            if s[i] != s[i+1]:
+                if (s[i] == 'a' and s[i+1] != 'b') or (s[i] == 'b' and s[i+1] != 'c') or (s[i] == 'c'):
+                    f = False 
+                    break
 
 
-    print('\n'.join(map(str, output_list)).strip())
-    pass
+        if (c['c'] == c['a'] or c['c'] == c['b']) and f and (c['a'] >= 1 and c['b'] >= 1 and c['c'] >= 1):
+            print('YES')
+        else:
+            print('NO')
+   
 
 '''
 res = [[a[j][i] for j in range(len(a))] for i in range(len(a[0]))] #transpose of matrix
@@ -35,8 +28,6 @@ if f:
     output_list += ['yes']
 else:
     output_list += ['no']
-aaaaaaaaeeeeeeeeiiiiiiiioooooooouuuuuuu
-
 
 '''
 

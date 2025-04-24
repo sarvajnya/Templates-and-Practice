@@ -3,61 +3,40 @@
     Language: PyPy3
 '''
 
-from typing import *
-from string import *
-from operator import *
-from itertools import *
-from heapq import *
-from functools import *
-from copy import *
-from collections import *
-import typing
-import bisect
-import random
-from io import BytesIO, IOBase
-import math
-import sys
-import os
-
-
 def main():
     t = si()
     output_list = []
     for _ in range(t):
-        n = si()
-        s = list(ss())
-        t = list(ss())
-        if s == t:
-            output_list += [0]
-            continue
+        n=si()
+        s=ss()
+        t=ss()
         if s[0] != t[0]:
             output_list += [-1]
             continue
-        l = []
-        c = 0
+        if s == t:
+            output_list += [0]
+            continue
         temp = []
-        for i in range(n):
-            if s[i] == '1':
-                temp += [i]
+        s=list(s)
+        for i in range(n-1):
+            if s[i] == '1' and s[i+1] != '1':
+                s[i+1] = '1'
+                temp += [i+1]
         # print(temp)
-        if 1:
-            for i in range(n-1, 0, -1):
-                if s[i] != t[i]:
-                    ind = bisect.bisect_left(temp, i)-1
-                    if ind > len(temp) or ind < 0:
-                        break 
-                    s = calc(temp[ind]+1, i, s)
-                    l.extend(range(temp[ind]+1, i+1))                  
-        f = s == t
-        if f:
-            output_list += [len(l)]
-            output_list += [' '.join(map(str, l)).strip()]
+        for i in range(n-1, 0, -1):
+            if s[i] != t[i]:
+                if s[i-1] == '1':
+                    s[i] = t[i]
+                    temp += [i]
+        if ''.join(s) == t and len(temp) <=3*n:
+            output_list += [len(temp)]
+            output_list += [' '.join(map(str, temp)).strip()]
         else:
             output_list += [-1]
 
+
     print('\n'.join(map(str, output_list)).strip())
     pass
-
 
 '''
 res = [[a[j][i] for j in range(len(a))] for i in range(len(a[0]))] #transpose of matrix
@@ -68,20 +47,28 @@ else:
 
 '''
 
+def calc():
+    pass
 
-def calc(l, r, s):
-    for i in range(l, r+1):
-        if s[i] == '1':
-            s[i] = '0'
-        else:
-            s[i] = '1'
-    return s
-    
+#Header_Files   
+import os
+import sys
+import math
+from io import BytesIO, IOBase
 
+import random
+import os
 
-# Header_Files
-
-
+import bisect
+import typing
+from collections import *
+from copy import *
+from functools import *
+from heapq import *
+from itertools import *
+from operator import *
+from string import *
+from typing import *
 inf = math.inf
 
 mod = 1e9+7
@@ -91,14 +78,13 @@ def input(): return sys.stdin.readline().strip()
 BUFSIZE = 4096
 
 
-# Fast IO using PyRival
+#Fast IO using PyRival
 
 RANDOM = random.randrange(2**62)
 
 
 def Wrapper(x):
-    return x ^ RANDOM
-
+  return x ^ RANDOM
 
 class FastIO(IOBase):
     newlines = 0
@@ -226,7 +212,6 @@ def power(a, b, m=mod):
         a = (a*a) % m
         b = b // 2
     return res % m
-
 
 if __name__ == '__main__':
     main()

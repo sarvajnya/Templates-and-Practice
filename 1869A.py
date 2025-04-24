@@ -8,22 +8,31 @@ def main():
     output_list = []
     for _ in range(t):
         n=si()
-        s='aeiou'
-        if n<=5:
-            output_list += [s[:n]]
+        a=li()
+        k=0
+        res = []
+        if len(set(a)) == 1 and a[0] == 0:
+            output_list += [0]
             continue
-        j = 0
-        for i in range(5, n):
-            s += s[j] 
-            j += 1
-            j %= 5
-            
+        if 1:
 
-        
-        s=sorted(s)
-        s = ''.join(s)
-        output_list += [s[:n]]
-        
+            if n&1 == 0:                
+                res += [[1, n]]
+                res += [[1, n]]
+                k = 2
+            else:
+                
+                    res += [[1, 2]]
+                    res += [[1, 2]]
+                    res += [[2, n]]                    
+                    res += [[2, n]]
+                    k = 4
+                    
+
+        output_list += [k]
+        for i in range(k):
+
+            output_list += [' '.join(map(str, res[i])).strip()]
 
 
     print('\n'.join(map(str, output_list)).strip())
@@ -35,8 +44,6 @@ if f:
     output_list += ['yes']
 else:
     output_list += ['no']
-aaaaaaaaeeeeeeeeiiiiiiiioooooooouuuuuuu
-
 
 '''
 
