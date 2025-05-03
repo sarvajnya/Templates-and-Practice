@@ -21,10 +21,34 @@ import os
 
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
-    # print('\n'.join(map(str, output_list)).strip())
+    t = si()
+    output_list = []
+    for _ in range(t):
+        a, b, n = li()
+        x = li()
+        ans = 0
+        val = []
+        for i in range(n):
+            if x[i] > 1:
+                val += [min(a, x[i])]
+
+        i = 0
+        if 1 in x:
+            val += [x.count(1)]
+        val.sort()
+        print(val)
+        while b > 0:
+            
+            ans += 1
+            b -= 1
+            if b == 1 and i<len(val):
+                b += val[i]
+                i += 1
+            print(b)
+            
+
+        output_list += [ans-1]
+    print('\n'.join(map(str, output_list)).strip())
     pass
 
 
@@ -34,19 +58,6 @@ if f:
     output_list += ['yes']
 else:
     output_list += ['no']
-    
-# Iterative DFS to avoid recursion limit
-    visited = [False] * (n + 1)
-    st = [next(i for i in range(1, n + 1) if adj[i])]  
-    while st:
-        node = st.pop()
-        if visited[node]:
-            continue
-        visited[node] = True
-        for neighbor in adj[node]:
-            if not visited[neighbor]:
-                st.append(neighbor)
-    return all(visited[1:])
 
 '''
 
@@ -73,7 +84,7 @@ RANDOM = random.randrange(2**62)
 
 
 def Wrapper(x):
-  return x ^ RANDOM
+    return x ^ RANDOM
 
 
 class FastIO(IOBase):

@@ -3,6 +3,7 @@
     Language: PyPy3
 '''
 
+
 from typing import *
 from string import *
 from operator import *
@@ -25,6 +26,16 @@ def main():
     # output_list = []
     # for _ in range(t):
     # print('\n'.join(map(str, output_list)).strip())
+    n, m = li()
+    ed = []
+
+    for i in range(m):
+        a, b = li()
+        ed += [[a, b]]
+    if calc(n, ed):
+        print('Yes')
+    else:
+        print('No')
     pass
 
 
@@ -34,25 +45,53 @@ if f:
     output_list += ['yes']
 else:
     output_list += ['no']
-    
-# Iterative DFS to avoid recursion limit
+
+'''
+
+
+def calc(n, ed):
+    if len(ed) != n:
+        return False  
+
+    seen_edges = set()
+    degree = [0] * (n + 1)
+    adj = [[] for _ in range(n + 1)]
+
+    for u, v in ed:
+        if u == v:
+            return False 
+
+        e = tuple(sorted((u, v)))
+        if e in seen_edges:
+            return False  
+        seen_edges.add(e)
+
+        if u > n or v > n or u < 1 or v < 1:
+            return False  
+
+        degree[u] += 1
+        degree[v] += 1
+        adj[u].append(v)
+        adj[v].append(u)
+
+    for i in range(1, n + 1):
+        if degree[i] != 2:
+            return False  
+
     visited = [False] * (n + 1)
-    st = [next(i for i in range(1, n + 1) if adj[i])]  
-    while st:
-        node = st.pop()
+ 
+    stack = [next(i for i in range(1, n + 1) if adj[i])]
+
+    while stack:
+        node = stack.pop()
         if visited[node]:
             continue
         visited[node] = True
         for neighbor in adj[node]:
             if not visited[neighbor]:
-                st.append(neighbor)
+                stack.append(neighbor)
+
     return all(visited[1:])
-
-'''
-
-
-def calc():
-    pass
 
 
 # Header_Files
@@ -73,7 +112,7 @@ RANDOM = random.randrange(2**62)
 
 
 def Wrapper(x):
-  return x ^ RANDOM
+    return x ^ RANDOM
 
 
 class FastIO(IOBase):

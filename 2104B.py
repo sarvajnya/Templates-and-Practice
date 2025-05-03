@@ -3,30 +3,33 @@
     Language: PyPy3
 '''
 
-from typing import *
-from string import *
-from operator import *
-from itertools import *
-from heapq import *
-from functools import *
-from copy import *
-from collections import *
-import typing
-import bisect
-import random
-from io import BytesIO, IOBase
-import math
-import sys
-import os
-
-
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
-    # print('\n'.join(map(str, output_list)).strip())
+    t = si()
+    output_list = []
+    for _ in range(t):
+        n=si()
+        a=li()
+        b=a.copy()
+        b.reverse()
+        pref = [0]*(n+1)
+        for i in range(1, n+1):
+            pref[i] = pref[i-1] + b[i-1]
+        # print(pref)
+        temp = []
+        z = -inf
+        for i in range(n):
+            z = max(z, a[i])
+            temp += [z]
+        temp.reverse()
+        # print(temp)
+            
+        ans = []
+        for i in range(n):
+            ans += [pref[i]+temp[i]]
+            
+        output_list += [' '.join(map(str, ans)).strip()]
+    print('\n'.join(map(str, output_list)).strip())
     pass
-
 
 '''
 res = [[a[j][i] for j in range(len(a))] for i in range(len(a[0]))] #transpose of matrix
@@ -34,30 +37,31 @@ if f:
     output_list += ['yes']
 else:
     output_list += ['no']
-    
-# Iterative DFS to avoid recursion limit
-    visited = [False] * (n + 1)
-    st = [next(i for i in range(1, n + 1) if adj[i])]  
-    while st:
-        node = st.pop()
-        if visited[node]:
-            continue
-        visited[node] = True
-        for neighbor in adj[node]:
-            if not visited[neighbor]:
-                st.append(neighbor)
-    return all(visited[1:])
 
 '''
-
 
 def calc():
     pass
 
+#Header_Files   
+import os
+import sys
+import math
+from io import BytesIO, IOBase
 
-# Header_Files
+import random
+import os
 
-
+import bisect
+import typing
+from collections import *
+from copy import *
+from functools import *
+from heapq import *
+from itertools import *
+from operator import *
+from string import *
+from typing import *
 inf = math.inf
 
 mod = 1e9+7
@@ -67,14 +71,13 @@ def input(): return sys.stdin.readline().strip()
 BUFSIZE = 4096
 
 
-# Fast IO using PyRival
+#Fast IO using PyRival
 
 RANDOM = random.randrange(2**62)
 
 
 def Wrapper(x):
   return x ^ RANDOM
-
 
 class FastIO(IOBase):
     newlines = 0
@@ -202,7 +205,6 @@ def power(a, b, m=mod):
         a = (a*a) % m
         b = b // 2
     return res % m
-
 
 if __name__ == '__main__':
     main()

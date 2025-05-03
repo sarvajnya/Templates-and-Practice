@@ -16,6 +16,19 @@ if f:
     output_list += ['yes']
 else:
     output_list += ['no']
+    
+# Iterative DFS to avoid recursion limit
+    visited = [False] * (n + 1)
+    st = [next(i for i in range(1, n + 1) if adj[i])]  
+    while st:
+        node = st.pop()
+        if visited[node]:
+            continue
+        visited[node] = True
+        for neighbor in adj[node]:
+            if not visited[neighbor]:
+                st.append(neighbor)
+    return all(visited[1:])
 
 '''
 

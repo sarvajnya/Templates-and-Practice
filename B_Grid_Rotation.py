@@ -25,6 +25,27 @@ def main():
     # output_list = []
     # for _ in range(t):
     # print('\n'.join(map(str, output_list)).strip())
+    n = si()
+    s = []
+    t = []
+    for i in range(n):
+        s += [list(ss())]
+    for i in range(n):
+        t += [list(ss())]
+    
+    if s==t:
+        print(0)
+        sys.exit(0)
+    z = [func(s,t)]
+    for i in range(10):
+        s=calc(s)
+        z += [func(s,t)]
+        
+    ans = z[0]
+    for i in range(len(z)):
+        ans=min(ans,i+z[i])
+    print(ans)
+
     pass
 
 
@@ -34,25 +55,23 @@ if f:
     output_list += ['yes']
 else:
     output_list += ['no']
-    
-# Iterative DFS to avoid recursion limit
-    visited = [False] * (n + 1)
-    st = [next(i for i in range(1, n + 1) if adj[i])]  
-    while st:
-        node = st.pop()
-        if visited[node]:
-            continue
-        visited[node] = True
-        for neighbor in adj[node]:
-            if not visited[neighbor]:
-                st.append(neighbor)
-    return all(visited[1:])
 
 '''
 
+def func(s,t):
+    c=0
+    for i in range(len(s)):
+        for j in range(len(s)):
+            if s[i][j] != t[i][j]:
+                c += 1
+    return c
 
-def calc():
-    pass
+def calc(s):
+    res = [[s[j][i] for j in range(len(s))] for i in range(len(s[0]))]
+    temp = []
+    for i in range(len(s)):
+        temp += [res[i][::-1]]
+    return temp
 
 
 # Header_Files
@@ -73,7 +92,7 @@ RANDOM = random.randrange(2**62)
 
 
 def Wrapper(x):
-  return x ^ RANDOM
+    return x ^ RANDOM
 
 
 class FastIO(IOBase):
