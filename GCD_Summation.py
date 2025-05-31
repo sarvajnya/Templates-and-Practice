@@ -21,10 +21,32 @@ import os
 
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
-    # print('\n'.join(map(str, output_list)).strip())
+    t = si()
+    output_list = []
+    for _ in range(t):
+        n, k = li()
+        if n-1 > k:
+            output_list += [-1]
+            continue
+        a = [0]*n
+        j=1
+        for i in range(n-3, -1, -1):
+            a[i] = j 
+            j+=1
+        val = k-(n-2)
+        a[-1] = val*1049
+        a[-2] = val*1051
+        if a[-1]>1e9:
+            a[-1] = val*89
+            a[-2]=val*83
+        # ans = 0
+        # for i in range(n-1):
+        #     ans += gcd(a[i], a[i+1])
+
+        # print(ans)
+
+        output_list += [' '.join(map(str, a)).strip()]
+    print('\n'.join(map(str, output_list)).strip())
     pass
 
 
@@ -73,7 +95,7 @@ RANDOM = random.randrange(2**62)
 
 
 def Wrapper(x):
-  return x ^ RANDOM
+    return x ^ RANDOM
 
 
 class FastIO(IOBase):

@@ -21,10 +21,32 @@ import os
 
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
-    # print('\n'.join(map(str, output_list)).strip())
+    t = si()
+    output_list = []
+    for _ in range(t):
+        n=si()
+        a=li()
+        a.sort(reverse=True)
+        r,b,u = 0,0,0
+        f=True
+        for i in a:
+            if i == 2:
+                b+=1
+            elif i== 1:
+                r += 1 
+            else:
+                if r>=b:
+                    b+=1
+                elif b>r:
+                    r+=1
+                
+        if f and r==b:
+            output_list += ['Yes']
+        else:
+            output_list += ['No']
+            
+                
+    print('\n'.join(map(str, output_list)).strip())
     pass
 
 

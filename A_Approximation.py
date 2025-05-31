@@ -25,6 +25,14 @@ def main():
     # output_list = []
     # for _ in range(t):
     # print('\n'.join(map(str, output_list)).strip())
+    a, b = li()
+    val1=abs(math.ceil(a/b)-a/b)
+    val2=abs(a//b-a/b)
+    if val1 <= val2:
+        print(math.ceil(a/b))
+    else:
+        print(a//b)
+    # print(max(1, math.floor(a/b)))
     pass
 
 
@@ -73,7 +81,7 @@ RANDOM = random.randrange(2**62)
 
 
 def Wrapper(x):
-  return x ^ RANDOM
+    return x ^ RANDOM
 
 
 class FastIO(IOBase):

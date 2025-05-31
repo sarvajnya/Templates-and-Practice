@@ -21,10 +21,25 @@ import os
 
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
-    # print('\n'.join(map(str, output_list)).strip())
+    t = si()
+    output_list = []
+    for _ in range(t):
+        n = si()
+        a = li()
+        if len(set(a)) == 1:
+            output_list += ['no']
+        else:
+            res=''
+            m=max(a)
+            for i in range(n):
+                if a[i] == m:
+                    res += '1 '
+                else:
+                    res += '2 '
+            output_list += ['yes']
+            output_list += [res.strip()]
+                        
+    print('\n'.join(map(str, output_list)).strip())
     pass
 
 
@@ -51,7 +66,13 @@ else:
 '''
 
 
-def calc():
+def calc(a):
+    if not a:
+        return 1
+    ans = a[0]
+    for i in a:
+        ans = gcd(ans, i)
+    return ans
     pass
 
 
@@ -73,7 +94,7 @@ RANDOM = random.randrange(2**62)
 
 
 def Wrapper(x):
-  return x ^ RANDOM
+    return x ^ RANDOM
 
 
 class FastIO(IOBase):

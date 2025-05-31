@@ -21,10 +21,28 @@ import os
 
 
 def main():
-    # t = si()
-    # output_list = []
-    # for _ in range(t):
-    # print('\n'.join(map(str, output_list)).strip())
+    t = si()
+    output_list = []
+    for _ in range(t):
+        n,k = li()
+        a=li()
+        m1, m2 = max(a), min(a)
+        if m1-m2-1 > k or m1 == 0:
+            output_list += ['Jerry']
+            continue
+        o, e = 0, 0
+        for i in a:
+            if i&1:
+                o += 1
+            else:
+                e+=1
+        
+        if o&1:
+            output_list += ['Tom']
+        else:
+            output_list += ['Jerry']
+        
+    print('\n'.join(map(str, output_list)).strip())
     pass
 
 
